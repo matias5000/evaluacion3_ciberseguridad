@@ -36,7 +36,10 @@ pipeline {
             steps {
                 bat 'docker rm -f ev3-secure-app-running || exit /b 0'
                 bat 'docker run -d --name ev3-secure-app-running -p 5000:5000 ev3-secure-app:%BUILD_NUMBER%'
-                bat 'timeout /t 5'
+                
+                // Espera estable (reemplazo de timeout)
+                sleep time: 5, unit: 'SECONDS'
+                
                 bat 'curl -f http://localhost:5000/'
             }
         }

@@ -16,7 +16,7 @@ def security_headers(response):
     return response
 @app.route("/")
 def index():
-    user_input = request.args.get("input", "")
+    user_input = request.args.get("input", "Aplicacion segura EV3 funcionando")
     safe_input = escape(user_input)
     response = make_response(f"<h1>{safe_input}</h1>")
     return response
